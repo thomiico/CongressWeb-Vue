@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Senate</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">  
+    <!-- My CSS -->
+    <link rel="stylesheet" href="./style/custom.css">
+</head>
+
+<body id="#tabla-senate">
+  <main id="app">
+  <header class="d-flex justify-content-around">
+    <img src="./img/img4.png" alt="Logo Data Insight Group">
+    <h1 class="display-1">Data Insight Group Logo</h1>
+    
+    <a class="display-5 mail-header" href="http://mailto:info@datainsightgroup.net">✉Info@DataInsightGroup.net</a>
+  </header>
+    
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <span class="text-cyan">Congress 113</span>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="./house.html">House</a></li>
+              <li><a class="dropdown-item" href="#">Senate</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <span class="text-cyan">Attendance</span>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="./house-attendance.html">House</a></li>
+              <li><a class="dropdown-item" href="./senate-attendance.html">Senate</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <span class="text-cyan">Party Loyalty</span>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="./house-party-loyalty.html">House</a></li>
+              <li><a class="dropdown-item" href="./senate-party-loyalty.html">Senate</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+      <div>
+        <div class="text-margin col-9">
+          <h2>Senators</h2>
+          <p class="fw-bold">First convened in 1789, the composition and powers of the Senate are established in Article One of the U.S. Constitution. Each state is represented by two senators, regardless of population, who serve staggered six-year terms. The Senate has several exclusive powers not granted to the House, including consenting to treaties as a precondition to their ratification and consenting to or confirming appointments of Cabinet secretaries, federal judges, other federal executive officials, military officers, regulatory officials, ambassadors, and other federal uniformed officers, as well as trial of federal officials impeached by the House.</p>
+        </div>
+
+        <form v-on:change="filterCheckSelect">
+          <label>
+            Democrat
+            <input type="checkbox" v-model="filterPartys" name="Filter" value="D">
+          </label>
+          <label>
+            Republican
+            <input type="checkbox" v-model="filterPartys" name="Filter" value="R">
+          </label>
+          <label>
+            Independent
+            <input type="checkbox" v-model="filterPartys" name="Filter" value="I">
+          </label>
+  
+          <select name="States" id="select-states" v-model="state">
+            <option value="all">All</option>
+            <option v-for="state in drawSelect()">{{state}}</option>
+
+          </select>
+        </form>
+
+        <table class="table table-hover table-bordered table-sm" id="tableMember">
+          <thead>
+            <tr>
+              <th>Full Name</th>
+              <th>Party</th>
+              <th>State</th>
+              <th>Years in Office</th>
+              <th>&percnt;Votes w/Party</th>
+            </tr>  
+          </thead>
+          <tbody id="table-body-member" v-for="member in filterMembers">
+            <tr>
+              <td><a href="${member.url}" target="_blank">{{member.first_name}} {{member.middle_name ? member.middle_name : ""}} {{member.last_name}}</a></td>
+              <td>{{member.party}}</td>
+              <td>{{member.state}}</td>
+              <td>{{member.seniority}} years</td>
+              <td>{{member.votes_with_party_pct}} %</td>
+            </tr>
+          </tbody>
+      </table>
+    </div>
+  </main>
+
+    <footer class="d-flex justify-content-center">
+      <p class="text-center text-footer">© 2021 Data Insight Group | All Rights Reserved</p>
+    </footer>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="./scripts/base.js"></script>
+</body>
+</html>
