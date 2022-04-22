@@ -15,8 +15,10 @@
 
   <main id="app">
   <header class="d-flex justify-content-around">
-    <img src="./img/img4.png" alt="Logo Data Insight Group">
-    <h1 class="display-1">Data Insight Group Logo</h1>
+    <div class="d-flex">
+      <img src="./img/img4.png" alt="Logo Data Insight Group">
+      <h1 class="display-1">Data Insight Group Logo</h1>
+    </div>
     
     <a class="display-5 mail-header" href="http://mailto:info@datainsightgroup.net">✉Info@DataInsightGroup.net</a>
   </header>
@@ -81,7 +83,7 @@
           </label>
           <label>
             Independent
-            <input type="checkbox" v-model="filterPartys" name="Filter" value="I">
+            <input type="checkbox" v-model="filterPartys" name="Filter" value="ID">
           </label>
   
           <select name="States" id="select-states" v-model="state">
@@ -91,7 +93,7 @@
           </select>
         </form>
 
-        <table class="table table-hover table-bordered table-sm" id="tableMember">
+        <table class="table table-hover table-bordered table-sm table-responsive-xxl" id="tableMember">
           <thead>
             <tr>
               <th>Full Name</th>
